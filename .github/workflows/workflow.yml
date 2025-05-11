@@ -15,13 +15,5 @@ jobs:
         uses: {placeholder}
       - name: {placeholder}
         run: |
-        {first command}
-        {second command}
-
-    - name: {placeholder}
-    run: |
-      {first command}
-      {second command}
-
-    - name: Run unit tests with nose
-      run: {insert command here}  
+         {first command}
+         {second command} 
