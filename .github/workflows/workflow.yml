@@ -1,19 +1,27 @@
-name: {name of workflow}
+name: {Workflow CI}
 
 on:
   push:
-    branches: {array of branches}
+    branches: {main branch}
   pull_request:
-    branches: {array of branches}
+    branches: {main branches}
 
 jobs:
   build:
-    runs-on: {placeholder}
-    container: {placeholder}
+    runs-on: {ubuntu-latest}
+    container: {python:3.9-slim}
     steps:
-      - name: {placeholder}
-        uses: {placeholder}
-      - name: {placeholder}
+      - name: {Chekout} 
+        uses: {actions/checkout@v3}
+      - name: {Install dependencies}
         run: |
-         {first command}
-         {second command} 
+         {python -m pip install --upgrade pip}
+         {pip install -r requirements.txt}
+         
+    - name: {Lint con flake8}
+    run: |
+      {flake8 service --count --select=E9,F63,F7,F82 --show-source --statistics}
+      {flake8 service --count --max-complexity=10 --max-line-length=127 --statistics}
+
+    - name: Run unit tests with nose
+      run: {}  
